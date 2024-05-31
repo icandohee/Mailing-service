@@ -1,0 +1,1 @@
+web: gunicorn mailing_service.wsgi:application

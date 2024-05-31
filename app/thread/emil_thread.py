@@ -47,7 +47,7 @@ def send_email_async(subject, content, from_email, recipient_list, attachments=[
 
 def send_learning_material_email_async(recipient_list, attachments=[]):
     send_email_async(
-        'Test Email',
+        '학습 자료 첨부 파일입니다.',
         ' ',
         f'{os.getenv('EMAIL_HOST_USER')}',
         recipient_list,

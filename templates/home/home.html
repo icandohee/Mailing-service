@@ -163,6 +163,9 @@ Mailing Service | Home
                 beforeSend: function(xhr) {
                     xhr.setRequestHeader("X-CSRFToken", getCsrfToken());
                 },
+                success: () => {
+                    alert("파일이 메일로 발송되었습니다.");
+                },
                 error: () => {
                     alert("선택한 파일을 메일로 보낼 수 없습니다.");
                 },
