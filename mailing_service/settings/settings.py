@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # Django apps
-    # 'django.contrib.admin', # 커스텀 유저 모델을 쓸 때는 제외하기
+    'django.contrib.admin', # 커스텀 유저 모델을 쓸 때는 제외하기
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -93,16 +93,8 @@ WSGI_APPLICATION = 'mailing_service.wsgi.application'
 # DB 커넥션을 설정합니다. 로컬 개발 시 해당 DB를 설치하고 아래에 설정된 Database와 계정(mailing_service, mailing_admin)을 새로 만들어야 합니다.
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'OPTIONS': {
-            'autocommit': True,
-            'charset': 'utf8mb4',
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -149,4 +141,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # AUTO INCREMENT 되는 PK를 BIGINT(최대 922경) 타입으로 정의합니다.
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 업로드 제한 용량 10MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800 # 업로드 제한 용량 10MB

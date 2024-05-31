@@ -1,7 +1,7 @@
 import urllib.parse
 from http import HTTPStatus
 from django.http import JsonResponse, Http404, HttpResponse
-from django.db.models import Prefetch, Count, Case, When, IntegerField
+from django.db.models import Prefetch, Count, Case, When, IntegerField, Sum
 from django.shortcuts import render
 from django.utils import timezone
 from rest_framework import decorators, filters, pagination, permissions, views, viewsets
@@ -232,7 +232,7 @@ def download_learning_materials(request):
 
 @decorators.api_view(['GET'])
 def send_learning_materials_by_email(request):
-    # 학습 자료 아이디 처리
+    # 학습 자료 아이디 가져오기
     learning_material_ids = get_ids_from_query(request)
 
     # 파일 목록 가져오기
@@ -246,3 +246,15 @@ def send_learning_materials_by_email(request):
     )
 
     return JsonResponse(status=HTTPStatus.OK, data=dict(result='OK'))
+
+
+@decorators.api_view(['GET'])
+def sum_learning_materials_total_price(request):
+    # 학습 자료 아이디 가져오기
+    learning_material_ids = get_ids_from_query(request)
+
+    learning_materials = LearningMaterial.objects.filter(id__in=learning_material_ids)
+
+    total_price = learning_materials.aggregate(total_price=Sum('price'))['total_price']
+
+    return JsonResponse(status=HTTPStatus.OK, data=dict(total_price=total_price))

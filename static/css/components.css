@@ -241,6 +241,17 @@
     font-weight: 400;
 }
 
+.empty {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--color-font-sub-default);
+    font-size: 14px;
+}
+
 /* ---------- Tag ---------- */
 .tag {
     --component-tag-color-background: var(--color-primary);

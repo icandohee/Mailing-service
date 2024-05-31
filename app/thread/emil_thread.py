@@ -48,7 +48,7 @@ def send_email_async(subject, content, from_email, recipient_list, attachments=[
 def send_learning_material_email_async(recipient_list, attachments=[]):
     send_email_async(
         'Test Email',
-        'This is a test email sent from Django.',
+        ' ',
         f'{os.getenv('EMAIL_HOST_USER')}',
         recipient_list,
         attachments

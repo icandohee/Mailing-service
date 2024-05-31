@@ -181,6 +181,8 @@ Mailing Service | Admin
                     xhr.setRequestHeader("X-CSRFToken", getCsrfToken());
                 },
                 success: (data) => {
+                    if (data.length === 0) return;
+
                     const table = $("#order-payment-table tbody");
                     table.empty();
 
