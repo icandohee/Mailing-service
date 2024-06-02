@@ -7,40 +7,22 @@ LOGGING = {
             'format': '{levelname} {asctime} {module} {message}',
             'style': '{',
         },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
     },
     'handlers': {
-        'file_debug': {
+        'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'django_debug.log',
+            'filename': 'django_log.log',
             'formatter': 'verbose',
-        },
-        'file_info': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': 'django_info.log',
-            'formatter': 'verbose',
-        },
-        'file_warning': {
-            'level': 'WARNING',
-            'class': 'logging.FileHandler',
-            'filename': 'django_warning.log',
-            'formatter': 'verbose',
-        },
-        'file_error': {
-            'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'filename': 'django_error.log',
-            'formatter': 'verbose',
-        },
+        }
+    },
+    'root': {
+        'handlers': ['file'],
+        'level': 'DEBUG',
     },
     'loggers': {
         'django': {
-            'handlers': ['file_debug', 'file_info', 'file_warning', 'file_error'],
+            'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,
         },
