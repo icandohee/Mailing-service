@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['.herokuapp.com', 'f0r2oopercent-2f864d306c6c.herokuapp.com', '127.0.0.1', 'localhost']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -94,10 +93,19 @@ WSGI_APPLICATION = 'mailing_service.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 # DB 커넥션을 설정합니다. 로컬 개발 시 해당 DB를 설치하고 아래에 설정된 Database와 계정(mailing_service, mailing_admin)을 새로 만들어야 합니다.
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'OPTIONS': {
+            'autocommit': True,
+            'charset': 'utf8mb4',
+        }
     }
 }
 
