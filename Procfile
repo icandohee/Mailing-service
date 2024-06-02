@@ -1,1 +1,1 @@
-web: gunicorn mailing_service.wsgi:application
+web: gunicorn mailing_service.wsgi
