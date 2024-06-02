@@ -1,3 +1,4 @@
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -24,7 +25,13 @@ LOGGING = {
             'filename': 'django_info.log',
             'formatter': 'verbose',
         },
-        'file': {
+        'file_warning': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': 'django_warning.log',
+            'formatter': 'verbose',
+        },
+        'file_error': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
             'filename': 'django_error.log',
@@ -33,8 +40,8 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
-            'level': 'ERROR',
+            'handlers': ['file_debug', 'file_info', 'file_warning', 'file_error'],
+            'level': 'DEBUG',
             'propagate': True,
         },
     },
