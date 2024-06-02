@@ -12,6 +12,18 @@ LOGGING = {
         },
     },
     'handlers': {
+        'file_debug': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'django_debug.log',
+            'formatter': 'verbose',
+        },
+        'file_info': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'django_info.log',
+            'formatter': 'verbose',
+        },
         'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
